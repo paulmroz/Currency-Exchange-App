@@ -1,0 +1,14 @@
+{
+    "name": "pawel/currency-exchange-project",
+    "require": {},
+    "autoload": {
+        "psr-4" : {
+            "Core\\": "core/",
+            "App\\Api\\": "app/api/",
+            "App\\": "app/"
+        },
+        "files": [
+            "./Support/helpers.php"
+        ]
+    }
+}
