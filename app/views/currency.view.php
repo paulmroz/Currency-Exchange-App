@@ -10,7 +10,49 @@
   </head>
   <body>
     <main>
-        <h1>Welcome to My Website2</h1>  
+        <h1>Currency conversion</h1>  
+        <form method="post">
+          <label for="currency1">Currency From:</label>
+          <select id="currency1" name="currency1">
+            <?php foreach ($currencyObjectsArray as $currency): ?>
+              <option value="<?php echo $currency->code; ?>"><?php echo strtoupper($currency->currency); ?></option>
+            <?php endforeach; ?>
+          </select>
+
+          <label for="currency2">Currency To:</label>
+          <select id="currency2" name="currency2">
+            <?php foreach ($currencyObjectsArray as $currency): ?>
+              <option value="<?php echo $currency->code; ?>"><?php echo strtoupper($currency->currency); ?></option>
+            <?php endforeach; ?>
+          </select>
+
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" name="amount" placeholder="Enter amount">
+
+          <button type="submit">Submit</button>
+        </form>
+
+        <h1>Last Exchanges:</h1>  
+        <table>
+          <thead>
+            <tr>
+              <th>From</th>
+              <th>To</th>
+              <th>Amount</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($exchangeObjectsArray as $exchange): ?>
+              <tr>
+                <td><?php echo strtoupper($exchange->currency_from_currency); ?></td>
+                <td><?php echo strtoupper($exchange->currency_to_currency); ?></td>
+                <td><?php echo $exchange->amount; ?></td>
+                <td><?php echo $exchange->result; ?></td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
     </main>
   </body>
 </html>

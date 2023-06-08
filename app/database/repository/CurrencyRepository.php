@@ -31,9 +31,18 @@ class CurrencyRepository extends Repository {
         }
     }
 
-    public function get()
+    public function getAll()
     {
         $stmt = $this->pdo->query("SELECT * FROM currency");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getByCode($code)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM currency WHERE code = :code");
+        $stmt->bindParam(':code', $code);
+        $stmt->execute();
+        
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

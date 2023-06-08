@@ -33,7 +33,7 @@ class CurrencyService {
     }
 
     public function getCurrencyFromDb() {
-        $dataArray = $this->currencyRepository->get();
+        $dataArray = $this->currencyRepository->getAll();
 
         $currencyObjects = [];
         foreach ($dataArray as $data) {
@@ -47,6 +47,18 @@ class CurrencyService {
         }
 
         return $currencyObjects;
+    }
+
+    public function exchange($from, $to, $amount)
+    {
+        $currencyFrom = $this->currencyRepository->getByCode($from);
+        $currencyTo = $this->currencyRepository->getByCode($to);
+            
+        $result = (int) $amount * ( (float) $currencyFrom[0]['mid'] / (float) $currencyTo[0]['mid']);
+
+        
+        
+        return round($result, 2);
     }
 
 }
