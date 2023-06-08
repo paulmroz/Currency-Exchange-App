@@ -1,4 +1,5 @@
 <?php
+
 return  [
     'database' => [
 
@@ -8,7 +9,7 @@ return  [
 
         'password' => 'MYSQL_PASSWORD',
 
-        'connection' =>'mysql:host=127.0.0.1',
+        'connection' =>'mysql:host=db',
 
         'options' =>[
             PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING

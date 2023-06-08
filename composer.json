@@ -3,12 +3,19 @@
     "require": {},
     "autoload": {
         "psr-4" : {
+            "App\\": "app/",
             "Core\\": "core/",
             "App\\Api\\": "app/api/",
-            "App\\": "app/"
+            "App\\Services\\": "app/services/",
+            "App\\Controllers\\": "app/controllers/",
+            "App\\Models\\": "app/models/",
+            "App\\Controllers\\Interfaces\\": "app/controllers/interfaces",
+            "App\\Database\\Connection\\": "app/database/connection",
+            "App\\Database\\Repository\\AbstractRepository\\": "app/database/repository/abstractRepository",
+            "App\\Database\\Repository\\": "app/database/repository"
         },
         "files": [
-            "./Support/helpers.php"
+            "./support/helpers.php"
         ]
     }
 }

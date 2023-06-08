@@ -10,7 +10,25 @@
   </head>
   <body>
     <main>
-        <h1>Welcome to My Website</h1>  
+        <h1>Table</h1>  
+        <table>
+          <thead>
+            <tr>
+              <th>Currency</th>
+              <th>Code</th>
+              <th>Mid</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($currencyObjectsArray as $currency): ?>
+              <tr>
+                <td><?php echo $currency->currency; ?></td>
+                <td><?php echo $currency->code; ?></td>
+                <td><?php echo $currency->mid; ?></td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
     </main>
   </body>
 </html>

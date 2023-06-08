@@ -24,6 +24,9 @@ class APIClient {
         $curl = curl_init($this->url);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+            'Accept: application/json',
+        ));
 
         $response = curl_exec($curl);
 

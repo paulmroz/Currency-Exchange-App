@@ -2,29 +2,38 @@
 
 declare(strict_types=1);
 
-namespace App\Connection\Database;
+namespace App\Database\Connection;
 
-class Connection
+use PDO;
+use PDOException;
+
+class MysqlConnection
 {
     private static $instance = null;
+    private $config;
 
-    private function __construct() {}
+    private function __construct()
+    {
+        $this->config = require_once __DIR__ . '/../../../config.php';
+    }
 
-    public static function getInstance($config)
+    public static function getInstance()
     {
         if (self::$instance === null) {
+            $instance = new self();
+            
             try {
-                self::$instance = new PDO(
-                    $config['connection'] . ';dbname=' . $config['name'],
-                    $config['username'],
-                    $config['password'],
-                    $config['options']
-                );
+                $connectionString = $instance->config['database']['connection'] . ';dbname=' . $instance->config['database']['name'];
+                $username = $instance->config['database']['username'];
+                $password = $instance->config['database']['password'];
+                $options = $instance->config['database']['options'];
+
+                self::$instance = new PDO($connectionString, $username, $password, $options);
             } catch (PDOException $e) {
                 die('Could not connect.');
             }
         }
-        
+
         return self::$instance;
     }
 }

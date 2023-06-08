@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace Core;
+use Exception;
 
 class Router
 {
@@ -29,7 +30,7 @@ class Router
     public static function load($file)
     {
         $router = new static;
-
+        
         require $file;
 
         return $router;
@@ -39,7 +40,14 @@ class Router
     {
         try {
             if (array_key_exists($uri, $this->routes[$requestType])) {
-                return $this->routes[$requestType][$uri];
+                $controller = $this->routes[$requestType][$uri];
+
+                if (is_string($controller)) {
+
+                    $controller = new $controller();
+                }
+                
+                return $controller->invoke();
             }
         } catch (Exception $e) {
             echo 'Message: ' . $e->getMessage();
