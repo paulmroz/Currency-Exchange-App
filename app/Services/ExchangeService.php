@@ -18,7 +18,7 @@ class ExchangeService {
         $this->exchangeRepository = new ExchangeRepository;
     }
 
-    public function exchange($from, $to, $amount)
+    public function exchange(string $from, string $to, float $amount)
     {
         $currencyFrom = $this->currencyRepository->getByCode($from);
         $currencyTo = $this->currencyRepository->getByCode($to);
@@ -37,16 +37,16 @@ class ExchangeService {
         foreach ($dataArray as $data) {
             $currency = new Exchange();
             $currency->id = $data['id'];
-            $currency->id_currency_from = $data['id_currency_from'];
-            $currency->id_currency_to = $data['id_currency_to'];
+            $currency->idCurrencyFrom = $data['id_currency_from'];
+            $currency->idCurrencyTo = $data['id_currency_to'];
             $currency->amount = (float) $data['amount'];
             $currency->result = (float) $data['result'];
-            $currency->currency_from_currency = $data['currency_from_currency'];
-            $currency->currency_from_code = $data['currency_from_code'];
-            $currency->currency_from_mid = (float) $data['currency_from_mid'];
-            $currency->currency_to_currency = $data['currency_to_currency'];
-            $currency->currency_to_code = $data['currency_to_code'];
-            $currency->currency_to_mid = (float) $data['currency_to_mid'];
+            $currency->currencyFromCurrency = $data['currency_from_currency'];
+            $currency->currencyFromCode = $data['currency_from_code'];
+            $currency->currencyFromMid = (float) $data['currency_from_mid'];
+            $currency->currencyToCurrency = $data['currency_to_currency'];
+            $currency->currencyToCode = $data['currency_to_code'];
+            $currency->currencyToMid = (float) $data['currency_to_mid'];
             
             $currencyObjects[] = $currency;
         }

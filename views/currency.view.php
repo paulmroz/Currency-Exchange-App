@@ -53,8 +53,8 @@
           <tbody>
             <?php foreach ($exchangeObjectsArray as $exchange): ?>
               <tr>
-                <td><?php echo strtoupper($exchange->currency_from_currency); ?></td>
-                <td><?php echo strtoupper($exchange->currency_to_currency); ?></td>
+                <td><?php echo strtoupper($exchange->currencyFromCurrency); ?></td>
+                <td><?php echo strtoupper($exchange->currencyToCurrency); ?></td>
                 <td><?php echo $exchange->amount; ?></td>
                 <td><?php echo $exchange->result; ?></td>
               </tr>
