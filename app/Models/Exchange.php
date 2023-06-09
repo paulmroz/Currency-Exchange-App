@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 class Exchange {
+    public const TABLE_NAME = 'exchanges';
     public string $id;
 
     public string $idCurrencyFrom;

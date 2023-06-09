@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Database\Repository;
 
 use App\Database\Repository\AbstractRepository\Repository;
+use App\Models\Currency;
+use App\Models\Exchange;
 use PDO;
 
 class ExchangeRepository extends Repository {
@@ -15,7 +17,7 @@ class ExchangeRepository extends Repository {
             $code = $data->code;
             $mid = $data->mid;
         
-            $stmt = $this->pdo->prepare("INSERT INTO currency (id, currency, code, mid) VALUES (?, ?, ?, ?) 
+            $stmt = $this->pdo->prepare("INSERT INTO " . Currency::TABLE_NAME . " (id, currency, code, mid) VALUES (?, ?, ?, ?) 
                                          ON DUPLICATE KEY UPDATE currency = ?, code = ?, mid = ?");
             
             $uuid = uniqid();
@@ -33,7 +35,7 @@ class ExchangeRepository extends Repository {
 
     public function getAllWithCurrencies(): array
     {
-        $stmt = $this->pdo->query("SELECT exchanges.*, 
+        $stmt = $this->pdo->query("SELECT " . Exchange::TABLE_NAME . ".*, 
                                             currency_from.currency AS currency_from_currency, 
                                             currency_from.code AS currency_from_code, 
                                             currency_from.mid AS currency_from_mid, 
@@ -53,7 +55,7 @@ class ExchangeRepository extends Repository {
         float $amount, 
         float $result
     ): void {
-        $stmt = $this->pdo->prepare("INSERT INTO exchanges (id, id_currency_from, id_currency_to , amount, result) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $this->pdo->prepare("INSERT INTO " . Exchange::TABLE_NAME . " (id, id_currency_from, id_currency_to , amount, result) VALUES (?, ?, ?, ?, ?)");
         
         $uuid = uniqid();
         $stmt->bindParam(1, $uuid);
