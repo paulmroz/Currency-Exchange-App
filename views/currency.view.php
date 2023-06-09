@@ -32,6 +32,14 @@
           <button type="submit">Submit</button>
         </form>
 
+        <h2>
+          <?php
+            if (!empty($error)) {
+                echo $error[0];
+            }
+          ?>
+        </h2>
+
         <h1>Last Exchanges:</h1>  
         <table>
           <thead>

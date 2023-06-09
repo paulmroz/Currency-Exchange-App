@@ -9,6 +9,7 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
-    <h1><?php echo $result; ?></h1>
+    
+    <h1>Result: <?php echo $result; ?></h1>
   </body>
 </html>

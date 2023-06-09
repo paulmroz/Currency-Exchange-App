@@ -48,9 +48,9 @@ class ExchangeRepository extends Repository {
     }
 
     public function saveExchangeInDb(
-        string $currencyFrom, 
-        string $currencyTo, 
-        string $amount, 
+        array $currencyFrom, 
+        array $currencyTo, 
+        float $amount, 
         float $result
     ): void {
         $stmt = $this->pdo->prepare("INSERT INTO exchanges (id, id_currency_from, id_currency_to , amount, result) VALUES (?, ?, ?, ?, ?)");

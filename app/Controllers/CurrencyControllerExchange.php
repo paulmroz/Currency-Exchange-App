@@ -15,10 +15,13 @@ class CurrencyControllerExchange implements Controller {
     }
     public function invoke() 
     {
-
-        $this->currencyExchangeRequest->validate();
-        
-        $result = (new ExchangeService)->exchange($_POST['currency1'], $_POST['currency2'], $_POST['amount']);
+        $error = $this->currencyExchangeRequest->validate() ?? [];
+      
+        $result = (new ExchangeService)->exchange(
+            $this->currencyExchangeRequest->currencyFrom,
+            $this->currencyExchangeRequest->currencyTo,
+            $this->currencyExchangeRequest->amount
+        );
 
         require './views/result.view.php';
     }
