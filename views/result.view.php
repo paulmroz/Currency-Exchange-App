@@ -9,6 +9,8 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
+    <h1><a href="">Table</a></h1>
+    <h2><a href="/exchange">Exchange</a></h2>
     
     <h1>Result: <?php echo $result; ?></h1>
   </body>

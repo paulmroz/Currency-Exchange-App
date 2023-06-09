@@ -9,6 +9,7 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
+    <h2><a href="/exchange">Exchange</a></h2>
     <main>
         <h1>Table</h1>  
         <table>

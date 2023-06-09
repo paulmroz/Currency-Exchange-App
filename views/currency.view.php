@@ -9,6 +9,7 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
+    <h1><a href="/">Table</a></h1>
     <main>
         <h1>Currency conversion</h1>  
         <form method="post">
