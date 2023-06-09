@@ -27,7 +27,7 @@
           </select>
 
           <label for="amount">Amount:</label>
-          <input type="number" id="amount" name="amount" placeholder="Enter amount">
+          <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
 
           <button type="submit">Submit</button>
         </form>

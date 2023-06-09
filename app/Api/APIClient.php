@@ -6,20 +6,20 @@ namespace App\Api;
 
 class APIClient {
     private static $instance;
-    private $url;
+    private string $url;
 
-    private function __construct($url) {
+    private function __construct(string $url) {
         $this->url = $url;
     }
 
-    public static function getInstance($url) {
+    public static function getInstance(string $url) {
         if (!self::$instance) {
             self::$instance = new self($url);
         }
         return self::$instance;
     }
 
-    public function callAPI() {
+    public function callAPI(): string {
         
         $curl = curl_init($this->url);
 

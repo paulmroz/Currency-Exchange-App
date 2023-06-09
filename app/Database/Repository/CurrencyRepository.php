@@ -8,7 +8,7 @@ use App\Database\Repository\AbstractRepository\Repository;
 use PDO;
 
 class CurrencyRepository extends Repository {
-    public function save($dataArray)
+    public function save(array $dataArray): void
     {
         foreach ($dataArray as $data) {
             $currency = $data->currency;
@@ -31,13 +31,13 @@ class CurrencyRepository extends Repository {
         }
     }
 
-    public function getAll()
+    public function getAll(): array
     {
         $stmt = $this->pdo->query("SELECT * FROM currency");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getByCode($code)
+    public function getByCode(string $code): array
     {
         $stmt = $this->pdo->prepare("SELECT * FROM currency WHERE code = :code");
         $stmt->bindParam(':code', $code);

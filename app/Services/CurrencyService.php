@@ -17,7 +17,8 @@ class CurrencyService {
         $this->currencyRepository = new CurrencyRepository;
     }
 
-    public function saveCurrencysInDb() {
+    public function saveCurrencysInDb(): void  
+    {
         $apiResults = APIClient::getInstance($this->url)->callAPI();
 
         $currencyArray = $this->extractData($apiResults);
@@ -25,14 +26,15 @@ class CurrencyService {
         $this->currencyRepository->save($currencyArray);
     }
 
-    public function extractData($apiResults)
-    {
+    public function extractData(string $apiResults): array
+    {   
         $currencyArray = json_decode($apiResults);
 
         return $currencyArray[0]->rates;
     }
 
-    public function getCurrencyFromDb() {
+    public function getCurrencyFromDb(): array 
+    {
         $dataArray = $this->currencyRepository->getAll();
 
         $currencyObjects = [];
@@ -49,14 +51,12 @@ class CurrencyService {
         return $currencyObjects;
     }
 
-    public function exchange($from, $to, $amount)
+    public function exchange(string $from, string $to, float $amount): float
     {
         $currencyFrom = $this->currencyRepository->getByCode($from);
         $currencyTo = $this->currencyRepository->getByCode($to);
             
         $result = (int) $amount * ( (float) $currencyFrom[0]['mid'] / (float) $currencyTo[0]['mid']);
-
-        
         
         return round($result, 2);
     }

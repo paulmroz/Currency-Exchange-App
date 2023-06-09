@@ -16,7 +16,7 @@ class Router
     ];
 
 
-    public function get($uri, $controller)
+    public function get($uri, $controller): void
     {
         $this->routes['GET'][$uri] = $controller;
     }
@@ -27,7 +27,7 @@ class Router
     }
 
 
-    public static function load($file)
+    public static function load($file): Router
     {
         $router = new static;
         

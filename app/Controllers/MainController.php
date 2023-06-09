@@ -8,9 +8,10 @@ use App\Controllers\Interfaces\Controller;
 use App\Services\CurrencyService;
 
 class MainController implements Controller {
-    public function invoke(){
+    public function invoke()
+    {
         $currencyObjectsArray = (new CurrencyService)->getCurrencyFromDb();
         
-        require 'app/views/index.view.php';
+        require './views/index.view.php';
     }
 }

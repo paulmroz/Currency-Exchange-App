@@ -9,11 +9,12 @@ use App\Services\CurrencyService;
 use App\Services\ExchangeService;
 
 class CurrencyController implements Controller {
-    public function invoke(){
+    public function invoke()
+    {
         $currencyObjectsArray = (new CurrencyService)->getCurrencyFromDb();
 
         $exchangeObjectsArray = (new ExchangeService)->getExchangesFromDb();
 
-        require 'app/views/currency.view.php';
+        require './views/currency.view.php';
     }
 }

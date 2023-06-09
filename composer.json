@@ -10,6 +10,8 @@
             "App\\Controllers\\": "app/controllers/",
             "App\\Models\\": "app/models/",
             "App\\Controllers\\Interfaces\\": "app/controllers/interfaces",
+            "App\\Controllers\\Requests\\": "app/controllers/requests",
+            "App\\Controllers\\Requests\\Interfaces\\": "app/controllers/requests/interfaces",
             "App\\Database\\Connection\\": "app/database/connection",
             "App\\Database\\Repository\\AbstractRepository\\": "app/database/repository/abstractRepository",
             "App\\Database\\Repository\\": "app/database/repository"

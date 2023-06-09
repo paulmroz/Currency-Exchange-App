@@ -8,7 +8,7 @@ use App\Database\Repository\AbstractRepository\Repository;
 use PDO;
 
 class ExchangeRepository extends Repository {
-    public function save($dataArray)
+    public function save(array $dataArray): void
     {
         foreach ($dataArray as $data) {
             $currency = $data->currency;
@@ -31,7 +31,7 @@ class ExchangeRepository extends Repository {
         }
     }
 
-    public function getAllWithCurrencies()
+    public function getAllWithCurrencies(): array
     {
         $stmt = $this->pdo->query("SELECT exchanges.*, 
                                             currency_from.currency AS currency_from_currency, 
@@ -47,8 +47,12 @@ class ExchangeRepository extends Repository {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function saveExchangeInDb($currencyFrom, $currencyTo, $amount, $result)
-    {
+    public function saveExchangeInDb(
+        string $currencyFrom, 
+        string $currencyTo, 
+        string $amount, 
+        float $result
+    ): void {
         $stmt = $this->pdo->prepare("INSERT INTO exchanges (id, id_currency_from, id_currency_to , amount, result) VALUES (?, ?, ?, ?, ?)");
         
         $uuid = uniqid();

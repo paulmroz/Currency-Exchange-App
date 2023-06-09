@@ -10,14 +10,14 @@ use PDOException;
 class MysqlConnection
 {
     private static $instance = null;
-    private $config;
+    private array $config;
 
     private function __construct()
     {
         $this->config = require_once __DIR__ . '/../../../config.php';
     }
 
-    public static function getInstance()
+    public static function getInstance(): PDO
     {
         if (self::$instance === null) {
             $instance = new self();
